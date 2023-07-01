@@ -31,19 +31,23 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'simpleui',  # 后台管理界面美化
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',  # 前后端分离
+    'drf_yasg',  # Swagger
+    "drfDemo.user"
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -127,3 +131,23 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# ----- SIMPLEUI -----
+# 离线模式
+SIMPLEUI_STATIC_OFFLINE = True
+# 隐藏项目链接
+SIMPLEUI_HOME_INFO = False
+
+# ----- STATIC -----
+STATIC_URL = '/static/'
+# 静态文件的存储目录
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+
+# 存储用户主动上传的文件 用来记录上传文件的位置
+MEDIA_ROOT = os.path.join(BASE_DIR, 'static/media')
+
+if DEBUG:
+    MEDIA_URL = 'media/'
+else:
+    MEDIA_URL = '/static/media/'
