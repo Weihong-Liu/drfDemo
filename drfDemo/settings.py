@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-2j^@o-7vo3$)(gd&)$6a97_objy+%ikx4!hl1ya8wpahe$9ff&
 DEBUG = True
 
 ALLOWED_HOSTS = []
+AUTH_USER_MODEL = "user.User"  # 覆盖掉django自带的用户模型
 
 
 # Application definition
@@ -40,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',  # 前后端分离
     'drf_yasg',  # Swagger
-    "drfDemo.user"
+    "drfDemo.user",
 ]
 
 MIDDLEWARE = [
